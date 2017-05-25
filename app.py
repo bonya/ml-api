@@ -1,13 +1,18 @@
 from flask import Flask
+from flask import jsonify
 
 from os import environ
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return 'Web APP'
+@app.route('/version')
+def version():
+    return jsonify({
+        'version': '1.0',
+        'models': [
+        ]
+    })
 
 
 if __name__ == '__main__':

@@ -1,10 +1,8 @@
-FROM ubuntu:latest
-MAINTAINER Bogdan Sulima "bogdan.sulima@gmail.com"
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-RUN pip install -U pip
+FROM python:2.7
+
 COPY . /app
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
 ENTRYPOINT ["python"]
 CMD ["app.py"]
