@@ -1,8 +1,3 @@
-FROM python:2.7
+FROM python:2.7-onbuild
 
-COPY . /app
-WORKDIR /app
-RUN pip install --no-cache-dir -r requirements.txt
-
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+CMD gunicorn -w 4 -b 0.0.0.0:5000 app:app

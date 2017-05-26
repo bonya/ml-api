@@ -11,11 +11,13 @@ def version():
     return jsonify({
         'version': '1.0',
         'models': [
-        ]
+        ],
+        'seed': 111
     })
 
 
 if __name__ == '__main__':
     port = environ.get('APP_PORT', '5000')
     port = int(port)
-    app.run(debug=True, host='0.0.0.0', port=port)
+    debug = 'DEBUG' in environ
+    app.run(debug=debug, host='0.0.0.0', port=port)
